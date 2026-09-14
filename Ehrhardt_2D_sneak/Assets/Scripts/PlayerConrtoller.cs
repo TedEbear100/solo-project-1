@@ -8,7 +8,7 @@ public class PlayerConrtoller : MonoBehaviour
     public float jumpheight = 10.0f;
 
     PlayerInput input;
-    Ridgebody rb; 
+    Rigidbody rb; 
 
     public Vector2 moveInput = Vector2.zero;
 
