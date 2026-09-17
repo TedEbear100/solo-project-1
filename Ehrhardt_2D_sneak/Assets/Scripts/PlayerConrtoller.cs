@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerConrtoller : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float jumpheight = 5.0f;
-    public float jumpDetectDistance = 10f;
+    public float jumpheight = 10.0f;
+    public float jumpDetectDistance = 1f;
 
     Ray2D jumpRay;
     Vector2 moveInput = Vector2.zero;
