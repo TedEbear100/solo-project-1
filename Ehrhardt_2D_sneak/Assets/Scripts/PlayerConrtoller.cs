@@ -4,10 +4,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerConrtoller : MonoBehaviour
 {
+    public int health = 5;
+    public int maxHealth = 5;
+
     public float speed = 5.0f;
     public float jumpheight = 10.0f;
     public float jumpDetectDistance = 1f;
-
     Ray2D jumpRay;
     Vector2 moveInput = Vector2.zero;
 
@@ -25,12 +27,18 @@ public class PlayerConrtoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        rb.linearVelocityX = moveInput.x * speed;
+
+        if (health <= 0) ;
+        {
+
+
+        }
+        
         jumpRay.origin = transform.position;
         jumpRay.direction = -transform.up;
 
-        rb.linearVelocityX = moveInput.x * speed;
-  
-    
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -40,13 +48,22 @@ public class PlayerConrtoller : MonoBehaviour
 
     public void Jump()
     {
-       
+
         if (Physics2D.Raycast(jumpRay.origin, jumpRay.direction, jumpDetectDistance))
             rb.AddForceY(jumpheight, ForceMode2D.Impulse);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Hazard")
+        {
+            health--;
+        }
+    }
 
+
+  
+   
 
 
 }
-
