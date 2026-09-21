@@ -2,19 +2,23 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerConrtoller : MonoBehaviour
 {
     public int health = 5;
     public int maxHealth = 5;
 
     public float speed = 5.0f;
-    public float jumpheight = 10.0f;
-    public float jumpDetectDistance = 1f;
+    public float jumpheight = 5.0f;
+    public float jumpDetectDistance = 1.1f;
+
     Ray2D jumpRay;
     Vector2 moveInput = Vector2.zero;
 
     PlayerInput input;
     Rigidbody2D rb;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,17 +34,18 @@ public class PlayerConrtoller : MonoBehaviour
 
         rb.linearVelocityX = moveInput.x * speed;
 
-        if (health <= 0) ;
+        /* if (health <= 0);
         {
 
 
         }
+        */
         
         jumpRay.origin = transform.position;
         jumpRay.direction = -transform.up;
 
     }
-
+    
     public void Move(InputAction.CallbackContext context)
     {
         moveInput.x = context.ReadValue<Vector2>().x;
@@ -48,7 +53,6 @@ public class PlayerConrtoller : MonoBehaviour
 
     public void Jump()
     {
-
         if (Physics2D.Raycast(jumpRay.origin, jumpRay.direction, jumpDetectDistance))
             rb.AddForceY(jumpheight, ForceMode2D.Impulse);
     }
