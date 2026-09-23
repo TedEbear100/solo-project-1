@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerConrtoller player;
+    public PlayerController player;
 
     public Image HealthBar;
 
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConrtoller>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         HealthBar = GameObject.Find("HealthBar").GetComponent<Image>();
     }
