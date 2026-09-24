@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour
     public float attackCooldownTime = 1.5f;
 
     public bool isAttacking = false;
-    public bool canAttack = false;
+    public bool canAttack = true;
+
 
     public PlayerController player;
     public Rigidbody2D rb;
@@ -50,17 +51,20 @@ public class Enemy : MonoBehaviour
         }
         else
             rb.linearVelocityX = 0;
-    }
 
-   private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if (isAttacking) 
         {
-            canAttack = true;
-
+            
 
         }
-    }
     
+        
+    }
 
+    private void OncollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Weapon")
+            
+                health--; 
+    }
 }
