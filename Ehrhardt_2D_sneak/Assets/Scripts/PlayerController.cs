@@ -96,6 +96,12 @@ public class PlayerController : MonoBehaviour
             currentWeaponObj = collision.gameObject;
             canAttack = true;
         }
+
+        if (collision.gameObject.tag == "Hazard")
+        {
+            health--;
+        }
     }
-    
+
+
 }

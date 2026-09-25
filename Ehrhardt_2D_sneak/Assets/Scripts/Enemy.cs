@@ -51,20 +51,14 @@ public class Enemy : MonoBehaviour
         }
         else
             rb.linearVelocityX = 0;
-
-        if (isAttacking) 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "MeleeZone")
         {
-            
+            health--;
 
         }
+    }
     
-        
-    }
-
-    private void OncollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Weapon")
-            
-                health--; 
-    }
 }
