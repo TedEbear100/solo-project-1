@@ -59,6 +59,13 @@ public class Enemy : MonoBehaviour
             health--;
 
         }
+        if (collision.gameObject.tag == "Player")
+        {
+            isAttacking = true;
+            
+        }
     }
     
+
+
 }
