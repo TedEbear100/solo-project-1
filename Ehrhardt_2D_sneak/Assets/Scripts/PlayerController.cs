@@ -188,7 +188,10 @@ public class PlayerController : MonoBehaviour
         {
             health--;
         }
-        
+        if (collision.gameObject.tag == "Power up")
+        {
+            
+        }
     }
 
 
@@ -203,4 +206,7 @@ public class PlayerController : MonoBehaviour
         regenStamina = true;
         sprintLock = false;
     }
+
+   
+
 }
