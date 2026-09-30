@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
 
     public Image HealthBar;
+    public Image StaminaBar;
 
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI DetectionMeterText;
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         HealthBar = GameObject.Find("HealthBar").GetComponent<Image>();
+
+        StaminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,6 @@ public class GameManager : MonoBehaviour
 
         HealthBar.fillAmount = (float)player.health / (float)player.maxHealth;
 
-
+        StaminaBar.fillAmount = (float)player.stamina / (float)player.maxStamina;
     }
 }
