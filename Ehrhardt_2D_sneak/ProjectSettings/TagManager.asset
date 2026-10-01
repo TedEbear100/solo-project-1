@@ -10,6 +10,7 @@ TagManager:
   - Hazard
   - MeleeZone
   - Equipment
+  - Pause
   layers:
   - Default
   - TransparentFX
