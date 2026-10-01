@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagment;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -21,8 +21,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (SceneManger.getActivescene
-            )
+        if (SceneManager.getActivescene)
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         HealthBar = GameObject.Find("HealthBar").GetComponent<Image>();
@@ -69,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void Loadlevel(int levelID)
     {
-        if (levelID >= SceneManger.sceneCount)
+        if (levelID >= SceneManager.sceneCount)
             Debug.Log("LevelID is too high " + levelID);
         else
             SceneManager.Loadscene(levelID);
@@ -77,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextNevel()
     {
-        Loadscene;
+        LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
 
 
     }
