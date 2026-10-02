@@ -21,16 +21,18 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (SceneManager.getActivescene)
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        Time.timeScale = 1;
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
-        HealthBar = GameObject.Find("HealthBar").GetComponent<Image>();
+            HealthBar = GameObject.Find("HealthBar").GetComponent<Image>();
 
-        StaminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
+            StaminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
 
-        pauseMenu = GameObject.FindGameObjectWithTag("Pause");
-        pauseMenu.SetActive(false);
-
+            pauseMenu = GameObject.FindGameObjectWithTag("Pause");
+            pauseMenu.SetActive(false);
+        }
     
     }
 
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
         if (paused)
         {
             Time.timeScale = 0;
+
             pauseMenu.SetActive(true);
         }
         else
@@ -66,12 +69,12 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void Loadlevel(int levelID)
+    public void LoadLevel(int levelID)
     {
         if (levelID >= SceneManager.sceneCount)
             Debug.Log("LevelID is too high " + levelID);
         else
-            SceneManager.Loadscene(levelID);
+            SceneManager.LoadScene(levelID);
     }
 
     public void LoadNextNevel()
@@ -82,7 +85,7 @@ public class GameManager : MonoBehaviour
     }
     public void MainMenu()
     {
-        Loadlevel(0);
+        LoadLevel(0);
     }
 
     public void Quit()

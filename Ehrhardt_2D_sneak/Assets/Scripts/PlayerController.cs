@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         jumpRay = new Ray2D();
         weaponSlot = transform.GetChild(0);
+        
+
     }
 
     // Update is called once per frame
@@ -191,10 +193,9 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Power up")
         {
             
+            
         }
     }
-
-
     IEnumerator sprintReset()
     {
         sprintLock = true;
