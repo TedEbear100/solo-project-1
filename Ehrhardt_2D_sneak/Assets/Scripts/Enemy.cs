@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
     public bool isAttacking = false;
     public bool canAttack = true;
 
+    public bool waitToAttack;
+
+
 
     public PlayerController player;
     public Rigidbody2D rb;
@@ -49,6 +52,10 @@ public class Enemy : MonoBehaviour
 
             if (targetDistance <= stoppingDistance)
                 rb.linearVelocityX = 0;
+            if (isAttacking == true)
+            {
+                player.health--;
+            }
         }
         else
             rb.linearVelocityX = 0;
@@ -67,7 +74,6 @@ public class Enemy : MonoBehaviour
             
         }
     }
-    
-    
 
+    
 }

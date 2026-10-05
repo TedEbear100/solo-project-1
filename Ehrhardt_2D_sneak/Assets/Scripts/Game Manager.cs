@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
         }
     
     }
-
+   
 
     public void LoadLevel(int levelID)
     {

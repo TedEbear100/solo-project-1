@@ -11,6 +11,8 @@ TagManager:
   - MeleeZone
   - Equipment
   - Pause
+  - Insta death
+  - LevelOver
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float jumpDetectDistance = 1.1f;
     public float attackTime = .5f;
     public float attackCooldownTime = 1f;
+
     public bool onGround = true;
     public bool sprinting = false;
     public bool canSprint = true;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         jumpRay = new Ray2D();
         weaponSlot = transform.GetChild(0);
+        
         
 
     }
@@ -173,7 +175,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Weapon")
         {
-            collision.gameObject.transform.SetPositionAndRotation(weaponSlot.position, new Quaternion(0, 0, 90f, 90));
+            collision.gameObject.transform.SetPositionAndRotation(weaponSlot.position, new Quaternion(0, 0, -90f, 90));
 
             collision.gameObject.transform.SetParent(weaponSlot);
 
@@ -190,12 +192,31 @@ public class PlayerController : MonoBehaviour
         {
             health--;
         }
+        if (collision.gameObject.tag == "Insta death")
+        {
+            health = 0;
+        }
         if (collision.gameObject.tag == "Power up")
         {
-            
-            
+
+            Destroy(collision.gameObject);
+        }
+
+       
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (Collision.gameObject.tag == "LevelOver")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().LoadNextNevel();
+        }
+        if (Collision.gameObject.tag == "Insta death")
+        {
+            health = 0;
         }
     }
+    
+    
     IEnumerator sprintReset()
     {
         sprintLock = true;
@@ -208,6 +229,5 @@ public class PlayerController : MonoBehaviour
         sprintLock = false;
     }
 
-   
 
 }
