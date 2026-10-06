@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         if (currentWeaponObj != null && canAttack)
         {
             isAttacking = true;
-            currentWeaponObj.transform.GetChild(0).gameObject.SetActive(true);
+            currentWeaponObj.transform.GetChild(1).gameObject.SetActive(true);
             canAttack = false;
             StartCoroutine("attackDuration");
         }
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(attackTime);
 
         isAttacking = false;
-        currentWeaponObj.transform.GetChild(0).gameObject.SetActive(false);
+        currentWeaponObj.transform.GetChild(1).gameObject.SetActive(false);
         StartCoroutine("attackCooldown");
     }
 
@@ -199,21 +199,18 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Power up")
         {
 
-            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
 
        
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (Collision.gameObject.tag == "LevelOver")
+        if (other.gameObject.tag == "LevelOver")
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().LoadNextNevel();
         }
-        if (Collision.gameObject.tag == "Insta death")
-        {
-            health = 0;
-        }
+       
     }
     
     

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI DetectionMeterText;
+
     public GameObject pauseMenu;
     
     public bool paused = false;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
+            Cursor.visible = false;
+
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
             HealthBar = GameObject.Find("HealthBar").GetComponent<Image>();
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
             StaminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
 
             pauseMenu = GameObject.FindGameObjectWithTag("Pause");
+
             pauseMenu.SetActive(false);
         }
     
@@ -44,6 +48,8 @@ public class GameManager : MonoBehaviour
         HealthBar.fillAmount = (float)player.health / (float)player.maxHealth;
 
         StaminaBar.fillAmount = (float)player.stamina / (float)player.maxStamina;
+
+        
     }
 
     public void pause()
@@ -51,6 +57,8 @@ public class GameManager : MonoBehaviour
         paused = !paused;
 
         pauseMenu.SetActive(paused);
+
+        
 
         if (paused)
         {
