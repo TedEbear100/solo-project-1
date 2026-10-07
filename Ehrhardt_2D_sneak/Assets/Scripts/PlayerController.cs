@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float jumpDetectDistance = 1.1f;
     public float attackTime = .5f;
     public float attackCooldownTime = 1f;
-
+    
     public bool onGround = true;
     public bool sprinting = false;
     public bool canSprint = true;
@@ -144,50 +144,10 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    public void Attack()
-    {
-        if (currentWeaponObj != null && canAttack)
-        {
-            isAttacking = true;
-            currentWeaponObj.transform.GetChild(1).gameObject.SetActive(true);
-            canAttack = false;
-            StartCoroutine("attackDuration");
-        }
-    }
-
-    IEnumerator attackDuration()
-    {
-        yield return new WaitForSeconds(attackTime);
-
-        isAttacking = false;
-        currentWeaponObj.transform.GetChild(1).gameObject.SetActive(false);
-        StartCoroutine("attackCooldown");
-    }
-
-    IEnumerator attackCooldown()
-    {
-        yield return new WaitForSeconds(attackCooldownTime);
-
-        canAttack = true;
-    }
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Weapon")
-        {
-            collision.gameObject.transform.SetPositionAndRotation(weaponSlot.position, new Quaternion(0, 0, -90f, 90));
-
-            collision.gameObject.transform.SetParent(weaponSlot);
-
-            collision.rigidbody.bodyType = RigidbodyType2D.Kinematic;
-            collision.rigidbody.simulated = false;
-
-            collision.collider.enabled = false;
-
-            currentWeaponObj = collision.gameObject;
-            canAttack = true;
-        }
-
+    
         if (collision.gameObject.tag == "Hazard")
         {
             health--;
@@ -196,11 +156,7 @@ public class PlayerController : MonoBehaviour
         {
             health = 0;
         }
-        if (collision.gameObject.tag == "Power up")
-        {
-
-            Destroy(gameObject);
-        }
+        
 
        
     }

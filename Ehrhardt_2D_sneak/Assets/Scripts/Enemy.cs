@@ -13,13 +13,15 @@ public class Enemy : MonoBehaviour
     public float stoppingDistance = 1;
     public float attackTime = 1f;
     public float attackCooldownTime = 1.5f;
+    public bool attackCooldown = false;
 
     public bool isAttacking = false;
     public bool canAttack = true;
+    public bool waitToAttack = false;
 
-    public bool waitToAttack;
+    public int damage = 1;
 
-
+    
 
     public PlayerController player;
     public Rigidbody2D rb;
@@ -39,8 +41,14 @@ public class Enemy : MonoBehaviour
 
         isFollowing = targetDistance <= detectionDistance;
 
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if (isFollowing)
         {
+            
             if (player.transform.position.x > transform.position.x)
             {
                 rb.linearVelocityX = speed;
@@ -70,8 +78,11 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isAttacking = true;
-            
-            
+                        
+        }
+        if (collision.gameObject.tag == "Hazard")
+        {
+            health--;
         }
     }
 

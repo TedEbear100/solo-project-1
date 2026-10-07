@@ -11,10 +11,10 @@ public class GameManager : MonoBehaviour
 
     public Image HealthBar;
     public Image StaminaBar;
-
+    public Slider Detection;
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI DetectionMeterText;
-
+         
     public GameObject pauseMenu;
     
     public bool paused = false;
@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
             pauseMenu = GameObject.FindGameObjectWithTag("Pause");
 
             pauseMenu.SetActive(false);
+
+            Detection = GameObject.Find("Alert").GetComponent<Slider>();
         }
     
     }
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
 
         StaminaBar.fillAmount = (float)player.stamina / (float)player.maxStamina;
 
-        
+       
     }
 
     public void pause()
