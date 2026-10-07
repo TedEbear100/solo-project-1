@@ -53,7 +53,11 @@ public class GameManager : MonoBehaviour
 
        
     }
+    public void Gameover()
+    {
+        if ()
 
+    }
     public void pause()
     {
         paused = !paused;
