@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public Slider Detection;
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI DetectionMeterText;
-         
+    public TextMeshProUGUI Gameover;
     public GameObject pauseMenu;
     
     public bool paused = false;
@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+
+        Gameover .enabled = false;
 
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
@@ -50,14 +52,14 @@ public class GameManager : MonoBehaviour
         HealthBar.fillAmount = (float)player.health / (float)player.maxHealth;
 
         StaminaBar.fillAmount = (float)player.stamina / (float)player.maxStamina;
-
+        if (player.health <= 0)
+        {
+            Gameover.enabled = true;
+            Time.timeScale = 0;
+        }
        
     }
-    public void Gameover()
-    {
-        
-
-    }
+    
     public void pause()
     {
         paused = !paused;
