@@ -84,6 +84,11 @@ public class Enemy : MonoBehaviour
         {
             health--;
         }
+        if (collision.gameObject.tag == "Insta death")
+        { 
+            health = 0;
+        
+        }
     }
 
     

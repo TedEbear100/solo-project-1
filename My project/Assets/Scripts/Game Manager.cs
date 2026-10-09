@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         HealthBar.fillAmount = (float)player.health / (float)player.maxHealth;
 
         StaminaBar.fillAmount = (float)player.stamina / (float)player.maxStamina;
+
         if (player.health <= 0)
         {
             Gameover.enabled = true;
@@ -88,12 +89,12 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(int levelID)
     {
-        if (levelID >= SceneManager.sceneCount)
+        if (levelID > SceneManager.sceneCount)
             Debug.Log("LevelID is too high " + levelID);
         else
             SceneManager.LoadScene(levelID);
     }
-
+    
     public void LoadNextNevel()
     {
         LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
@@ -107,6 +108,6 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+       Application.Quit();
     }
 }

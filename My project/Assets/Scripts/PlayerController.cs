@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -18,7 +19,8 @@ public class PlayerController : MonoBehaviour
     public float jumpDetectDistance = 1.1f;
     public float attackTime = .5f;
     public float attackCooldownTime = 1f;
-    
+    public float PhysicMaterial;
+
     public bool onGround = true;
     public bool sprinting = false;
     public bool canSprint = true;
@@ -45,9 +47,8 @@ public class PlayerController : MonoBehaviour
         weaponSlot = transform.GetChild(0);
         
         
-
+        
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -166,7 +167,11 @@ public class PlayerController : MonoBehaviour
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().LoadNextNevel();
         }
-       
+        if (other.gameObject.tag == "Power up")
+        {
+            
+        
+        }
     }
     
     
