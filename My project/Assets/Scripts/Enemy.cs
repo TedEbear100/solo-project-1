@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public float detectionDistance = 5;
     public float stoppingDistance = 1;
     public float attackTime = 1f;
-    public float attackCooldownTime = 1.5f;
+    public float attackCooldownTime = 5.5f;
     public bool attackCooldown = false;
 
     public bool isAttacking = false;
@@ -45,7 +45,12 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        if (isAttacking == true)
+        {
+            waitToAttack = true;
+            canAttack = false;
+            attackCooldown = true;
+        }
         if (isFollowing)
         {
             

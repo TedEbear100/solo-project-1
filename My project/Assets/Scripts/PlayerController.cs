@@ -157,16 +157,15 @@ public class PlayerController : MonoBehaviour
         {
             health = 0;
         }
-        
-
-       
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "LevelOver")
+        if (gameObject.tag == "LevelOver")
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().LoadNextNevel();
         }
+
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.gameObject.tag == "Power up")
         {
             

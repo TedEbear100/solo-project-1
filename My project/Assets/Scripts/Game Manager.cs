@@ -25,9 +25,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
 
         Gameover .enabled = false;
-
+        
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
+            
             Cursor.visible = false;
 
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -58,7 +59,12 @@ public class GameManager : MonoBehaviour
             Gameover.enabled = true;
             Time.timeScale = 0;
         }
-       
+        if (Gameover.enabled == true)
+        {
+            
+
+        
+        }
     }
     
     public void pause()
