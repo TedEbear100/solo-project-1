@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public float attackTime = .5f;
     public float attackCooldownTime = 1f;
     public float PhysicMaterial;
+    public int friction = 0;
+    
 
     public bool onGround = true;
     public bool sprinting = false;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking = false;
     public bool canAttack = false;
     
+
     Ray2D jumpRay;
     Vector2 moveInput = Vector2.zero;
 

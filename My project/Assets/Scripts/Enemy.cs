@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Enemy : MonoBehaviour
 {
@@ -21,8 +22,8 @@ public class Enemy : MonoBehaviour
 
     public int damage = 1;
 
-    
 
+    
     public PlayerController player;
     public Rigidbody2D rb;
 
@@ -83,7 +84,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isAttacking = true;
-                        
+            
         }
         if (collision.gameObject.tag == "Hazard")
         {
@@ -95,6 +96,6 @@ public class Enemy : MonoBehaviour
         
         }
     }
-
+    
     
 }

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-
+        //HELP ME
         Gameover .enabled = false;
         
         if (SceneManager.GetActiveScene().buildIndex != 0)
