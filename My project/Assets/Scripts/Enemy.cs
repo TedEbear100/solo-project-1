@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Enemy : MonoBehaviour
 {
+    SpriteRenderer sr;
+    Animator 
     public PlayerController Player;
    
     public bool isFollowing = false;
@@ -32,7 +34,7 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
-        
+        sr = GetComponent<spri>
     }
 
     // Update is called once per frame
@@ -57,11 +59,13 @@ public class Enemy : MonoBehaviour
             
             if (player.transform.position.x > transform.position.x)
             {
+                sr.flipX = false;
                 rb.linearVelocityX = speed;
             }
             else if (player.transform.position.x < transform.position.x)
             {
                 rb.linearVelocityX = -speed;
+                sr.flipX = true;
             }
 
             if (targetDistance <= stoppingDistance)
@@ -96,6 +100,14 @@ public class Enemy : MonoBehaviour
         
         }
     }
-    
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        { 
+            
+               StartCoroutine("AttackCooldown");
+            
+        }
+    }
     
 }

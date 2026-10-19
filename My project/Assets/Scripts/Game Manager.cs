@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             
-            Cursor.visible = false;
+            Cursor.visible =true;
 
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
@@ -64,6 +64,11 @@ public class GameManager : MonoBehaviour
             
 
         
+        }
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            Cursor.visible = false;
+
         }
     }
     

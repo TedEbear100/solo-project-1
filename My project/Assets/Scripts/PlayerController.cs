@@ -6,6 +6,8 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class PlayerController : MonoBehaviour
 {
+    AudioSource speaker;
+
     public int health = 5;
     public int maxHealth = 5;
     public float speed = 5.0f;
@@ -19,8 +21,7 @@ public class PlayerController : MonoBehaviour
     public float jumpDetectDistance = 1.1f;
     public float attackTime = .5f;
     public float attackCooldownTime = 1f;
-    public float PhysicMaterial;
-    public int friction = 0;
+    
     
 
     public bool onGround = true;
@@ -147,7 +148,16 @@ public class PlayerController : MonoBehaviour
             rb.AddForceY(jumpHeight, ForceMode2D.Impulse);
     }
 
+    public void interact(InputAction.CallbackContext context)
+    {
+        if (context.ReadValueAsButton())
+        { 
+
+        
+        }
     
+    }
+
     
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -13,6 +13,7 @@ TagManager:
   - Pause
   - Insta death
   - LevelOver
+  - Door
   layers:
   - Default
   - TransparentFX
