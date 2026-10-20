@@ -4,12 +4,12 @@ using UnityEngine.InputSystem;
 public class Enemy : MonoBehaviour
 {
     SpriteRenderer sr;
-    Animator 
+    Animator Anim;
     public PlayerController Player;
    
     public bool isFollowing = false;
 
-    public int health = 5;
+    public int health = 3;
     public int maxHealth = 5;
     public float speed = 5;
     public float detectionDistance = 5;
@@ -34,50 +34,55 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<spri>
+        sr = GetComponent<SpriteRenderer>();
+        Anim = GetComponent<Animator>();
+
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        float targetDistance = Vector2.Distance(player.transform.position, transform.position);
-
-        isFollowing = targetDistance <= detectionDistance;
-
-        if (health <= 0)
+        // Update is called once per frame
+        void Update()
         {
-            Destroy(gameObject);
-        }
-        if (isAttacking == true)
-        {
-            waitToAttack = true;
-            canAttack = false;
-            attackCooldown = true;
-        }
-        if (isFollowing)
-        {
-            
-            if (player.transform.position.x > transform.position.x)
+            float targetDistance = Vector2.Distance(player.transform.position, transform.position);
+
+            isFollowing = targetDistance <= detectionDistance;
+
+            Anim.SetBool("isWalking", isFollowing);
+            Anim.speed = speed / 3.5f;
+
+            if (health <= 0)
             {
-                sr.flipX = false;
-                rb.linearVelocityX = speed;
+                Destroy(gameObject);
             }
-            else if (player.transform.position.x < transform.position.x)
-            {
-                rb.linearVelocityX = -speed;
-                sr.flipX = true;
-            }
-
-            if (targetDistance <= stoppingDistance)
-                rb.linearVelocityX = 0;
             if (isAttacking == true)
             {
-                player.health--;
+                waitToAttack = true;
+                canAttack = false;
+                attackCooldown = true;
             }
+            if (isFollowing)
+            {
+
+                if (player.transform.position.x > transform.position.x)
+                {
+                    sr.flipX = false;
+                    rb.linearVelocityX = speed;
+                }
+                else if (player.transform.position.x < transform.position.x)
+                {
+                    rb.linearVelocityX = -speed;
+                    sr.flipX = true;
+                }
+
+                if (targetDistance <= stoppingDistance)
+                    rb.linearVelocityX = 0;
+                if (isAttacking == true)
+                {
+                    player.health--;
+                }
+            }
+            else
+                rb.linearVelocityX = 0;
         }
-        else
-            rb.linearVelocityX = 0;
-    }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "MeleeZone")

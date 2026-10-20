@@ -7,7 +7,8 @@ using UnityEngine.InputSystem.LowLevel;
 public class PlayerController : MonoBehaviour
 {
     AudioSource speaker;
-
+    public float PhysicMaterial;
+    public int friction = 0;
     public int health = 5;
     public int maxHealth = 5;
     public float speed = 5.0f;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     
 
     Ray2D jumpRay;
+    Ray2D interactRay;
     Vector2 moveInput = Vector2.zero;
 
     public GameObject currentWeaponObj;
@@ -49,8 +51,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         jumpRay = new Ray2D();
         weaponSlot = transform.GetChild(0);
-        
-        
+
+        interactRay = new Ray2D();
         
     }
     // Update is called once per frame
