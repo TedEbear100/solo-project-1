@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class GameManager : MonoBehaviour
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
         {
             Gameover.enabled = true;
             Time.timeScale = 0;
+            Cursor.visible = true;
         }
         if (Gameover.enabled == true)
         {
@@ -65,11 +67,15 @@ public class GameManager : MonoBehaviour
 
         
         }
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             Cursor.visible = false;
 
         }
+
+       
+            Cursor.visible = paused;
+
     }
     
     public void pause()
@@ -78,7 +84,6 @@ public class GameManager : MonoBehaviour
 
         pauseMenu.SetActive(paused);
 
-        
 
         if (paused)
         {
@@ -100,6 +105,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(int levelID)
     {
+        
         if (levelID > SceneManager.sceneCount)
             Debug.Log("LevelID is too high " + levelID);
         else
@@ -109,6 +115,7 @@ public class GameManager : MonoBehaviour
     public void LoadNextNevel()
     {
         LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        
 
 
     }

@@ -7,8 +7,7 @@ using UnityEngine.InputSystem.LowLevel;
 public class PlayerController : MonoBehaviour
 {
     AudioSource speaker;
-    public float PhysicMaterial;
-    public int friction = 0;
+   
     public int health = 5;
     public int maxHealth = 5;
     public float speed = 5.0f;
@@ -172,7 +171,7 @@ public class PlayerController : MonoBehaviour
         {
             health = 0;
         }
-        if (gameObject.tag == "LevelOver")
+        if (collision.gameObject.tag == "LevelOver")
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().LoadNextNevel();
         }
