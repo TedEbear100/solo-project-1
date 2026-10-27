@@ -7,7 +7,8 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    
+    AudioSource speaker;
+
     public PlayerController player;
 
     public Image HealthBar;
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
             Cursor.visible = false;
 
         }
-
+        
        
             Cursor.visible = paused;
 

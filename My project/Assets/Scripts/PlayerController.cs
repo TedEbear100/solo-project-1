@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public float attackCooldownTime = 1f;
     
     
-
+    
     public bool onGround = true;
     public bool sprinting = false;
     public bool canSprint = true;
@@ -50,19 +50,28 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         jumpRay = new Ray2D();
         weaponSlot = transform.GetChild(0);
-
+        speaker = GetComponent<AudioSource>();
         interactRay = new Ray2D();
         
     }
     // Update is called once per frame
     void Update()
     {
-         onGround = Physics2D.Raycast(jumpRay.origin, jumpRay.direction, jumpDetectDistance);
+        onGround = Physics2D.Raycast(jumpRay.origin, jumpRay.direction, jumpDetectDistance);
         jumpRay.origin = transform.position;
         jumpRay.direction = -transform.up;
-
+        
         Vector2 tempMove = rb.linearVelocity;
+        
+        
+      
 
+        
+        
+        if (onGround)
+        {
+
+        }
         tempMove.x = moveInput.x * speed;
 
         if (sprinting)
@@ -146,7 +155,12 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         if (onGround)
+        {
+            speaker.Play();
             rb.AddForceY(jumpHeight, ForceMode2D.Impulse);
+        }
+        
+       
     }
 
     public void interact(InputAction.CallbackContext context)

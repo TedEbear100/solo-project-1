@@ -110,7 +110,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         { 
             
-               StartCoroutine("AttackCooldown");
+              
             
         }
     }
