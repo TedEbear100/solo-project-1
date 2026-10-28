@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8654789332737714206}
   - component: {fileID: 2474993835816751417}
   - component: {fileID: 8248304454382919803}
-  - component: {fileID: 4447918647671383215}
   - component: {fileID: 7455167123343769894}
   m_Layer: 0
   m_Name: Enemy
@@ -199,22 +198,6 @@ MonoBehaviour:
   damage: 1
   player: {fileID: 0}
   rb: {fileID: 0}
---- !u!111 &4447918647671383215
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244672395416158594}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!95 &7455167123343769894
 Animator:
   serializedVersion: 7
