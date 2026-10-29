@@ -10005,22 +10005,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!111 &1244942314
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244942306}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!1 &1286116727
 GameObject:
   m_ObjectHideFlags: 0
@@ -10457,7 +10441,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.133152
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -14065,9 +14049,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1244672395416158594, guid: 88c14594851e9a04a91e2e471063273a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1244942307}
-    - targetCorrespondingSourceObject: {fileID: 1244672395416158594, guid: 88c14594851e9a04a91e2e471063273a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1244942314}
   m_SourcePrefab: {fileID: 100100000, guid: 88c14594851e9a04a91e2e471063273a, type: 3}
 --- !u!1 &1830288652
 GameObject:

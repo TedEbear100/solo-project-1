@@ -74,12 +74,13 @@ public class Enemy : MonoBehaviour
 
                 if (targetDistance <= stoppingDistance)
                     rb.linearVelocityX = 0;
+                   Anim.SetBool("isWalking", false);
                 if (isAttacking == true)
                 {
                     player.health--;
                 }
             }
-            else
+                else
                 rb.linearVelocityX = 0;
         }
     
