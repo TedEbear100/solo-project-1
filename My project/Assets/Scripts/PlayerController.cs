@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     Ray2D jumpRay;
     Ray2D interactRay;
     Vector2 moveInput = Vector2.zero;
-
+    SpriteRenderer sr;
     public GameObject currentWeaponObj;
     Transform weaponSlot;
     PlayerInput input;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         weaponSlot = transform.GetChild(0);
         speaker = GetComponent<AudioSource>();
         interactRay = new Ray2D();
-        
+        sr = GetComponent<SpriteRenderer>();
     }
     // Update is called once per frame
     void Update()
@@ -62,12 +62,12 @@ public class PlayerController : MonoBehaviour
         jumpRay.direction = -transform.up;
         
         Vector2 tempMove = rb.linearVelocity;
-        
-        
-      
+
 
         
-        
+
+
+
         if (onGround)
         {
 
